@@ -8,6 +8,7 @@ const Jobs = () => {
   useEffect(() => {
     setJobs(jobsdata);
   }, []);
+
   return (
     <div>
       {jobs.map((job) => (
