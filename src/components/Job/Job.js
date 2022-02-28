@@ -1,6 +1,7 @@
 import React from "react";
 
-const Job = ({ job }) => {
+const Job = (props) => {
+  const { job, handleTagClick } = props;
   const {
     company,
     logo,
@@ -61,8 +62,12 @@ const Job = ({ job }) => {
       </div>
       <div className="sm:border-none sm:ml-auto sm:pt-0 sm:mt-0 sm:mb-0 flex items-center flex-wrap  m-4 pt-4 border-t border-gray-300 border-solid">
         {tags
-          ? tags.map((tag) => (
-              <span className="bg-teal-100 font-bold text-teal-500 my-2 mr-4 p-2 rounded">
+          ? tags.map((tag, index) => (
+              <span
+                key={index}
+                onClick={() => handleTagClick(tag)}
+                className="bg-teal-100 cursor-pointer font-bold text-teal-500 my-2 mr-4 p-2 rounded"
+              >
                 {tag}
               </span>
             ))
