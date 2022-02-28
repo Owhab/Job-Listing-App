@@ -39,11 +39,14 @@ const Jobs = () => {
 
   const filteredJobs = jobs.filter(filterFunc);
 
+  const clearFilters = () => {
+    setFilters([]);
+  };
   return (
-    <div>
+    <>
       {filters.length > 0 && (
         // Remove the filtering component from header when filter is empty
-        <div className="sm:flex-row sm:my-8 flex flex-col mx-10 my-16  shadow-md rounded-md bg-white m-4 p-4">
+        <div className="sm:flex-row flex flex-col mx-10 -my-20 mb-16 z-10 relative shadow-md rounded-md bg-white m-4 p-4">
           {filters.map((filter, index) => (
             <span
               className="bg-teal-100 cursor-pointer font-bold text-teal-500 my-2 mr-4 p-2 rounded"
@@ -53,13 +56,19 @@ const Jobs = () => {
               {filter} ✕
             </span>
           ))}
+          <button
+            onClick={clearFilters}
+            className="font-bold text-gray-700 ml-auto"
+          >
+            Clear
+          </button>
         </div>
       )}
 
       {filteredJobs.map((job) => (
         <Job key={job.id} job={job} handleTagClick={handleTagClick}></Job>
       ))}
-    </div>
+    </>
   );
 };
 
